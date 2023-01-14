@@ -1,0 +1,44 @@
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+}
+
+// Example usage:
+var fiveMinutes = 60 * 5,
+    display = document.querySelector('#time');
+startTimer(fiveMinutes, display);
+
+
+In this example, the startTimer function takes two arguments: the duration of the timer in seconds, and the HTML element to display the timer. The function uses the setInterval method to update the timer display every second. The timer will continue to run until it reaches 0, at which point it will be reset to the initial duration.
+
+The above code snippet uses setInterval function to call the function every second, which updates the time and check if time is over and if yes it will reset the timer.
+
+You can also use setTimeout function to make the timer function. This function will call the function after the given time duration.
+
+
+let time=60;
+function startTimer(){
+    setTimeout(function(){
+        console.log(time);
+        if(time>0) {
+            time=time-1;
+            startTimer();
+        }
+    },1000);
+}
+startTimer();
+
+
+This is the basic code, you can change it as you like.
